@@ -5,6 +5,68 @@
     "version": "1.0"
   },
   "paths": {
+    "/Analysis/GetCalculatedAnalysis": {
+      "post": {
+        "tags": [
+          "Analysis"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedAnalysisRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedAnalysisRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedAnalysisRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Discounts/GetCalculatedDiscounts": {
+      "post": {
+        "tags": [
+          "Discounts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedDiscountsRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedDiscountsRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedDiscountsRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Proposals/ParseXlsx": {
       "post": {
         "tags": [
@@ -157,6 +219,57 @@
   },
   "components": {
     "schemas": {
+      "GetCalculatedAnalysisRequestDTO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "providerNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "inpatientFilter": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCalculatedDiscountsRequestDTO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "tier": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "GetCalculatedProvidersRequestDTO": {
         "type": "object",
         "properties": {
@@ -172,15 +285,15 @@
             "type": "integer",
             "format": "int32"
           },
-          "monthStart": {
+          "startDate": {
             "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
-          "monthEnd": {
+          "endDate": {
             "type": "string",
-            "nullable": true
+            "format": "date-time"
           },
-          "ipFilter": {
+          "inpatientFilter": {
             "type": "string",
             "nullable": true
           },
