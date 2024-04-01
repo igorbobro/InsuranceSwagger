@@ -160,7 +160,7 @@
         }
       }
     },
-    "/Discounts/GetDiscountDetailsExcelFile": {
+    "/Discounts/GetDiscountDetailsXml": {
       "post": {
         "tags": [
           "Discounts"
@@ -570,6 +570,13 @@
         "properties": {
           "username": {
             "type": "string",
+            "nullable": true
+          },
+          "groupDiscounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupDiscount"
+            },
             "nullable": true
           },
           "tier": {
