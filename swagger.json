@@ -191,6 +191,37 @@
         }
       }
     },
+    "/Discounts/GetCalculatedDiscountsAndDiscountDetails": {
+      "post": {
+        "tags": [
+          "Discounts"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedDiscountsAndDiscountDetailsRequestDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedDiscountsAndDiscountDetailsRequestDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCalculatedDiscountsAndDiscountDetailsRequestDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/Proposals/ParseXlsx": {
       "post": {
         "tags": [
@@ -565,10 +596,41 @@
         },
         "additionalProperties": false
       },
-      "GetCalculatedDiscountsRequestDTO": {
+      "GetCalculatedDiscountsAndDiscountDetailsRequestDTO": {
         "type": "object",
         "properties": {
           "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "orderColumnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDescending": {
+            "type": "boolean"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tier": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "serviceName": {
             "type": "string",
             "nullable": true
           },
@@ -577,6 +639,16 @@
             "items": {
               "$ref": "#/components/schemas/GroupDiscount"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GetCalculatedDiscountsRequestDTO": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
             "nullable": true
           },
           "tier": {
@@ -590,6 +662,13 @@
           "type": {
             "type": "string",
             "nullable": true
+          },
+          "groupDiscounts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupDiscount"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -600,6 +679,13 @@
           "username": {
             "type": "string",
             "nullable": true
+          },
+          "orderColumnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDescending": {
+            "type": "boolean"
           },
           "pageNumber": {
             "type": "integer",
@@ -632,13 +718,6 @@
           "type": {
             "type": "string",
             "nullable": true
-          },
-          "orderColumnName": {
-            "type": "string",
-            "nullable": true
-          },
-          "isDescending": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
