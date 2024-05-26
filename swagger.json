@@ -244,6 +244,27 @@
             }
           },
           {
+            "name": "Tier",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "City",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Username",
             "in": "query",
             "schema": {
@@ -340,7 +361,7 @@
         }
       }
     },
-    "/Proposals/GetProposalsExcelFile": {
+    "/Proposals/GetProposalsXml": {
       "post": {
         "tags": [
           "Proposals"
